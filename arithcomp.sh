@@ -17,3 +17,7 @@ echo  $e
 
 f=$( echo $a $b $c | awk '{print $1*$2+$3 }' )
 echo $f
+
+g=$( echo $a $b $c | awk '{print $1 % $2 + $3 }' )
+
+echo $g
