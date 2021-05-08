@@ -1,0 +1,4 @@
+#! /bin/bash  -x
+
+
+echo WLCOME TO THE ARITHMATIC COMPUTATION AND SORTING
