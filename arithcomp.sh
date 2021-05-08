@@ -25,4 +25,8 @@ dict['g']=$f
 echo $g
 
 
-echo ${dict[@]}
+echo "value of dict" ${dict[@]}
+
+
+arr=(${dict[@]})
+echo "value of arry" : ${arr[@]}
