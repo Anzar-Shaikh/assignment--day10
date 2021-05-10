@@ -8,19 +8,19 @@ read -p "ENTER 1st Number :" a
 read -p "ENTER 2nd Number :" b
 read -p "ENTER 3rd Number :" c
 
-d=$( echo $a $b $c | awk '{print $1+$2*$3 }' )
+d=$((a + b * c))
 dict['d']=$d
 echo $d
 
-e=$( echo $a $b $c | awk '{print $3+$1/$2 }' )
+e=$(( c + a / c ))
 dict['e']=$e
 echo  $e
 
-f=$( echo $a $b $c | awk '{print $1*$2+$3 }' )
+f=$(( a * b + c ))
 dict['f']=$f
 echo $f
 
-g=$( echo $a $b $c | awk '{print $1 % $2 + $3 }' )
+g=$((a%b+c))
 dict['g']=$f
 echo $g
 
@@ -28,5 +28,23 @@ echo $g
 echo "value of dict" ${dict[@]}
 
 
-arr=(${dict[@]})
-echo "value of arry" : ${arr[@]}
+save=(${dict[@]})
+echo "value of arry" : ${save[@]}
+
+
+n=${#save[@]}
+
+for ((i=0; i<$n; i++))
+do
+        for (( j=0; j<$(($n-$i-1)); j++ ))
+         do
+           if [ ${save[$j]} -lt ${save[ $(($j+1)) ]} ]
+             then
+		a=${save[$j]}
+             save[$j]=${save[ $(($j+1)) ]}
+  	     save[ $(($j+1)) ]=$a
+            fi
+	done
+done
+  echo "sorted Arry in descending order :"
+  echo ${save[@]}
