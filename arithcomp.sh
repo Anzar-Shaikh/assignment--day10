@@ -48,3 +48,21 @@ do
 done
   echo "sorted Arry in descending order :"
   echo ${save[@]}
+
+
+for ((i=0; i<$n; i++))
+do
+        for (( j=0; j<$(($n-$i-1)); j++ ))
+         do
+           if [ ${save[$j]} -gt ${save[ $(($j+1)) ]} ]
+             then
+                a=${save[$j]}
+             save[$j]=${save[ $(($j+1)) ]}
+             save[ $(($j+1)) ]=$a
+            fi
+        done
+done
+  echo "sorted Arry in descending order :"
+  echo ${save[@]}
+
+
